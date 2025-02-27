@@ -6,7 +6,7 @@
 /*   By: bchafi <bchafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 16:19:46 by bchafi            #+#    #+#             */
-/*   Updated: 2025/02/23 11:33:28 by bchafi           ###   ########.fr       */
+/*   Updated: 2025/02/27 16:38:51 by bchafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	sig_usr(int sig, siginfo_t *info, void *context)
 {
-	static int			bit_count;
-	static int			c_pid;
+	static int				bit_count;
+	static int				c_pid;
 	static unsigned char	accumulator;
 
 	(void)context;
@@ -50,6 +50,6 @@ int	main(void)
 	if (sigaction(SIGUSR1, &sa, NULL) == -1
 		|| sigaction(SIGUSR2, &sa, NULL) == -1)
 		exit(EXIT_FAILURE);
-	while (1)	
+	while (1)
 		pause();
 }
