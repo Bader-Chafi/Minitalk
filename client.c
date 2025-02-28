@@ -6,7 +6,7 @@
 /*   By: bchafi <bchafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 16:11:55 by bchafi            #+#    #+#             */
-/*   Updated: 2025/02/27 20:10:03 by bchafi           ###   ########.fr       */
+/*   Updated: 2025/02/28 10:20:30 by bchafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,29 @@ void	convert_to_bits(char s, int id_server)
 	}
 }
 
+int	parcing(char *s1, char *s2, int ac)
+{
+	int	pid;
+
+	if (!s1 || !s2)
+	{
+		ft_printf("**the argument is empty!!**\n");
+		exit(EXIT_FAILURE);
+	}
+	if (ac != 3)
+	{
+		ft_printf("**You must 3 arguments (executed file, pid, message)**\n");
+		exit(EXIT_FAILURE);
+	}
+	pid = ft_atoi(s1);
+	if (pid <= 0 || pid > PID_MAX)
+	{
+		ft_printf("**the PID is not valid!!**\n");
+		exit(EXIT_FAILURE);
+	}
+	return (pid);
+}
+
 int	main(int ac, char **av)
 {
 	int	i;
@@ -47,21 +70,12 @@ int	main(int ac, char **av)
 
 	i = 0;
 	fail = 0;
-	if (!av[1] || !av[2])
-		ft_printf("**the argument are not valid !!**");
-	if (ac != 3)
+	pid = parcing(av[1], av[2], ac);
+	if (av[2][i] != '\0')
 	{
-		ft_printf("**the argument are not valid !!**");
-		exit(EXIT_FAILURE);
+		while (av[2][i])
+			convert_to_bits(av[2][i++], pid);
+		convert_to_bits('\0', pid);
 	}
-	pid = ft_atoi(av[1]);
-	if (pid <= 0 || pid > PID_MAX)
-	{
-		ft_printf("**the PID are not valid !!**");
-		exit(EXIT_FAILURE);
-	}
-	while (av[2][i])
-		convert_to_bits(av[2][i++], pid);
-	convert_to_bits('\0', pid);
 	return (0);
 }

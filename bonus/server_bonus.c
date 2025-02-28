@@ -6,7 +6,7 @@
 /*   By: bchafi <bchafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 15:22:50 by bchafi            #+#    #+#             */
-/*   Updated: 2025/02/27 20:04:06 by bchafi           ###   ########.fr       */
+/*   Updated: 2025/02/28 10:47:55 by bchafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	expected(int expected_bytes, int accumulator, int buff_i)
 	return (expected_bytes);
 }
 
-void	check_(unsigned char *add, int *b_count, int *buff_i, siginfo_t *info)
+void	check(unsigned char *add, int *b_count, int *buff_i, siginfo_t *info)
 {
 	if (g_cpid != info->si_pid)
 	{

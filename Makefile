@@ -6,19 +6,19 @@
 #    By: bchafi <bchafi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/21 19:04:12 by bchafi            #+#    #+#              #
-#    Updated: 2025/02/27 20:17:43 by bchafi           ###   ########.fr        #
+#    Updated: 2025/02/28 10:36:46 by bchafi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = cc -Wall -Wextra -Werror #-fsanitize=address -g
+CC = cc -Wall -Wextra -Werror
 PRINTF = utils/ft_printf.c utils/ft_printf_utils.c
 
 SOURCES_C = \
 	client.c utils/ft_atoi.c $(PRINTF)
 SOURCES_S = \
 	server.c $(PRINTF)
-OBJECTS_C = $(SOURCES_C:.c=.o)
-OBJECTS_S = $(SOURCES_S:.c=.o)
+OBJECTS_C = $(SOURCES_C:%.c=%.o)
+OBJECTS_S = $(SOURCES_S:%.c=%.o)
 
 SOURCES_C_B = \
 	bonus/client_bonus.c utils/ft_atoi.c $(PRINTF)
@@ -43,7 +43,7 @@ client_bonus : $(OBJECTS_C_B)
 server_bonus : $(OBJECTS_S_B) 
 	$(CC) $(OBJECTS_S_B) -o $@
 
-%.o : %.c bonus/minitalk_bonus.h minitalk.h
+%.o : %.c bonus/minitalk_bonus.h minitalk.h utils/ft_printf.h
 	$(CC) -c $< -o $@
 
 clean :
