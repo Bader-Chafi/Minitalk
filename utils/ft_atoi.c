@@ -6,7 +6,7 @@
 /*   By: bchafi <bchafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 00:11:44 by bchafi            #+#    #+#             */
-/*   Updated: 2025/02/27 20:04:24 by bchafi           ###   ########.fr       */
+/*   Updated: 2025/03/01 18:21:30 by bchafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	ft_atoi(const char *str)
 		if (number > (LONG_MAX - (str[i] - '0')) / 10)
 			return (long_number64(sign));
 		number = (number * 10) + (str[i] - '0');
+		if ((str[i + 1] < '0' || str[i + 1] > '9') && str[i + 1] != '\0')
+			return (0);
 		i++;
 	}
 	return (number * sign);
